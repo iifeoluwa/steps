@@ -1,14 +1,22 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
-const Shipment = (props) => {
-
-    return (
-        <div>
-            <h3>Are You Accepting Shipments?</h3>
-            <button >Yes</button>
-            <button >No</button>
-        </div>
-    )
-}
+const Shipment = withRouter(({ history }) => (
+    <div>
+        <h3>Are You Accepting Shipments?</h3>
+        <button 
+            type="button" 
+            onClick={() => history.push('/profile', {shipments: true})}
+            >
+            Yes
+        </button>
+        <button 
+            type="button" 
+            onClick={() => history.push('/profile', {shipments: false})}
+            >
+            No
+        </button>
+    </div>
+))
 
 export default Shipment

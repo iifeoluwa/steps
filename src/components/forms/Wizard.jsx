@@ -35,10 +35,12 @@ export default class Wizard extends React.Component {
 
     handleSubmit = (values, bag) => {
         const { children, onSubmit } = this.props;
-        const { page } = this.state;
-        const isLastPage = page === React.Children.count(children) - 1;
-        if (isLastPage) {
-          return onSubmit(values, bag);
+        const { step } = this.state;
+        const isLastStep = step === React.Children.count(children) - 1;
+        const validNextStep = children[step + 1] !== false;
+
+        if (isLastStep || !validNextStep) {
+          return onSubmit(values);
         } else {
           bag.setTouched({});
           bag.setSubmitting(false);
@@ -50,14 +52,13 @@ export default class Wizard extends React.Component {
         const {children} = this.props;
         const { step, values } = this.state;
         const activeStep = React.Children.toArray(children)[step];
-        const isLastStep = step === React.Children.count(children) - 1;
 
         return (
             <Formik 
                 initialValues={values}
                 validate={this.validate}
                 onSubmit={this.handleSubmit}
-                render={({ values, handleSubmit, isSubmitting, handleReset }) => (
+                render={({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
                         { activeStep }
                         <div className="buttons">
@@ -71,7 +72,7 @@ export default class Wizard extends React.Component {
                                 </button>
                             )}
 
-                            {!isLastStep && <button type="submit" disabled={isSubmitting}>Next »</button>}
+                            <button type="submit" >Next »</button>
                         </div>
                     </form>   
                 )}

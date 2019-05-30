@@ -47,19 +47,30 @@ export default class App extends React.Component {
         return errors;
     }
 
+    onSubmit = (values) => {
+        this.props.history.push('/plan', {data: values})
+    }
+
     render() {
+        const { shipments } = this.props.location.state;
+        
         return (
             <div className='container'>
-                <Wizard initialValues = {this.initialValues}>
+                <Wizard 
+                initialValues = {this.initialValues}
+                onSubmit={this.onSubmit}
+                >
                     <Wizard.Step  validate={this.validate} >
                         <Name />
                     </Wizard.Step>
                     <Wizard.Step>
                         <Phone />
                     </Wizard.Step>
-                    <Wizard.Step>
-                        <Address />
-                    </Wizard.Step>
+                    {shipments && (
+                        <Wizard.Step>
+                            <Address />
+                        </Wizard.Step>
+                    )}
                 </Wizard>
             </div>
         )
