@@ -1,8 +1,9 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
+import MaskedInput from "react-text-mask";
 
 const Address = (props) => {
-    const {required} = props;
+    const zipMaskRule = [/\d/, /\d/, /\d/, /\d/, /\d/];
 
     return (
         <div className='formContainer'>
@@ -12,7 +13,7 @@ const Address = (props) => {
                     name="address"
                     component="input"
                     type="text"
-                    validate={required}
+                    required
                 />
                 <ErrorMessage
                     name="address"
@@ -35,11 +36,15 @@ const Address = (props) => {
             </div>
             <div>
                 <label>Zip Code</label>
-                <Field
-                name="zip"
-                component="input"
-                type="text"
-                validate={required}
+                <Field name="zip" render={({ field }) => {
+                    return <MaskedInput
+                    {...field}
+                    mask={zipMaskRule}
+                    placeholder="94303"
+                    name="zip"
+                    type="text"
+                    required />
+                }}
                 />
                 <ErrorMessage
                 name="zip"
@@ -53,7 +58,7 @@ const Address = (props) => {
                 name="city"
                 component="input"
                 type="text"
-                validate={required}
+                required
                 />
                 <ErrorMessage
                 name="city"
@@ -67,7 +72,7 @@ const Address = (props) => {
                 name="state"
                 component="input"
                 type="text"
-                validate={required}
+                required
                 />
                 <ErrorMessage
                 name="state"

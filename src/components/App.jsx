@@ -17,8 +17,6 @@ export default class App extends React.Component {
         city: '',
         state: '',
     }
-
-    required = value => (value ? undefined : 'Required.');
     
     weightPassword = password => {
         return zxcvbn(password).feedback;
@@ -35,9 +33,8 @@ export default class App extends React.Component {
 
         if (values.password) {
             const suggestions = this.weightPassword(values.password).suggestions;
-            
             if (suggestions[0]) {
-                errors.password = suggestions[0];
+                errors.password = suggestions[1] ? suggestions[1] : suggestions[0];
             }
         }
 
@@ -55,13 +52,13 @@ export default class App extends React.Component {
             <div className='container'>
                 <Wizard initialValues = {this.initialValues}>
                     <Wizard.Step  validate={this.validate} >
-                        <Name required={this.required}/>
+                        <Name />
                     </Wizard.Step>
                     <Wizard.Step>
-                        <Phone required={this.required} />
+                        <Phone />
                     </Wizard.Step>
                     <Wizard.Step>
-                        <Address required={this.required} />
+                        <Address />
                     </Wizard.Step>
                 </Wizard>
             </div>
