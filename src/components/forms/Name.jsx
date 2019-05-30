@@ -2,8 +2,7 @@ import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 
 const Name = (props) => {
-    const {required, confirmPassword} = props;
-
+    
     return (
         <div className='formContainer'>
             <div>
@@ -12,7 +11,7 @@ const Name = (props) => {
                     name="name"
                     component="input"
                     type="text"
-                    validate={required}
+                    required
                 />
                 <ErrorMessage
                     name="name"
@@ -26,7 +25,7 @@ const Name = (props) => {
                 name="email"
                 component="input"
                 type="email"
-                validate={required}
+                required
                 />
                 <ErrorMessage
                 name="email"
@@ -40,7 +39,7 @@ const Name = (props) => {
                 name="password"
                 component="input"
                 type="password"
-                validate={required}
+                required
                 />
                 <ErrorMessage
                 name="password"
@@ -54,7 +53,7 @@ const Name = (props) => {
                 name="passwordConfirm"
                 component="input"
                 type="password"
-                validate={confirmPassword}
+                required
                 />
                 <ErrorMessage
                 name="passwordConfirm"
