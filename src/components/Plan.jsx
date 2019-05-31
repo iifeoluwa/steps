@@ -102,7 +102,7 @@ class Plan extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Button>Done</Button>
+                <Button classNam="space-up">Done</Button>
             </Container>
         )
     }
