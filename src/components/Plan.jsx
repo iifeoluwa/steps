@@ -15,7 +15,7 @@ class Plan extends React.Component {
     
     render() {
         return (
-            <Container textAlign="center">
+            <Container textAlign="center" className="space-up">
                 <h3>Choose your preferred Plan</h3>
                 <div className='ui container center aligned'>
                     <div className="ui grid">

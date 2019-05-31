@@ -68,7 +68,7 @@ export default class Wizard extends React.Component {
                     <form onSubmit={handleSubmit}>
                         <StepTracker step={step} shipments={shipments}/>
                         { activeStep }
-                        <div className="nav">
+                        <div className="nav space-up">
                             {step > 0 && (
                                 <Button onClick={this.prev} animated>
                                     <Button.Content visible>Previous</Button.Content>

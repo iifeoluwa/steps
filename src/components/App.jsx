@@ -66,7 +66,7 @@ export default class App extends React.Component {
         const { shipments } = this.props.location.state;
         
         return (
-            <Container textAlign="center">
+            <Container textAlign="center" className="space-up">
                 <Wizard
                 initialValues = {this.initialValues}
                 onSubmit={this.onSubmit}
