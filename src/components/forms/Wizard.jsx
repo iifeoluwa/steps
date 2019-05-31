@@ -1,9 +1,11 @@
 import React from "react";
 import { Formik } from 'formik';
+import { StepTracker } from ".";
+import { Button, Icon } from 'semantic-ui-react'
 
 
 export default class Wizard extends React.Component {
-    static Step = ({ children }) => children;
+    static Step = ({ children }) => children
 
     constructor(props) {
         super(props);
@@ -49,7 +51,7 @@ export default class Wizard extends React.Component {
     };
 
     render() {
-        const {children} = this.props;
+        const {children, shipments} = this.props;
         const { step, values } = this.state;
         const activeStep = React.Children.toArray(children)[step];
 
@@ -60,19 +62,24 @@ export default class Wizard extends React.Component {
                 onSubmit={this.handleSubmit}
                 render={({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
+                        <StepTracker step={step} shipments={shipments}/>
                         { activeStep }
-                        <div className="buttons">
+                        <div className="nav">
                             {step > 0 && (
-                                <button
-                                type="button"
-                                className="secondary"
-                                onClick={this.prev}
-                                >
-                                « Previous
-                                </button>
+                                <Button onClick={this.prev} animated>
+                                    <Button.Content visible>Previous</Button.Content>
+                                    <Button.Content hidden>
+                                        <Icon name='arrow left' />
+                                    </Button.Content>
+                                </Button>
                             )}
 
-                            <button type="submit" >Next »</button>
+                            <Button type="submit" animated>
+                                <Button.Content visible>Next</Button.Content>
+                                <Button.Content hidden>
+                                    <Icon name='arrow right' />
+                                </Button.Content>
+                            </Button>
                         </div>
                     </form>   
                 )}
