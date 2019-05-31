@@ -1,22 +1,24 @@
 import React from 'react'
+import { Button, Container, Header } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
 const Shipment = withRouter(({ history }) => (
-    <div>
-        <h3>Are You Accepting Shipments?</h3>
-        <button 
+    <Container textAlign="center">
+        <Header as="h3" color='teal'>Are You Accepting Shipments?</Header>
+        <Button 
             type="button" 
+            primary
             onClick={() => history.push('/profile', {shipments: true})}
             >
             Yes
-        </button>
-        <button 
+        </Button>
+        <Button 
             type="button" 
             onClick={() => history.push('/profile', {shipments: false})}
             >
             No
-        </button>
-    </div>
+        </Button>
+    </Container>
 ))
 
 export default Shipment

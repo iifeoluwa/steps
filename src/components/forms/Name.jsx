@@ -1,17 +1,19 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
+import { Container, Input } from 'semantic-ui-react'
 
 const Name = (props) => {
     
     return (
-        <div className='formContainer'>
+        <Container>
             <div>
                 <label>Name</label>
-                <Field
-                    name="name"
-                    component="input"
+                <Field name="name" render={({field}) => {
+                    return <Input
+                    {...field}
                     type="text"
-                    required
+                    required />
+                }} 
                 />
                 <ErrorMessage
                     name="name"
@@ -21,11 +23,12 @@ const Name = (props) => {
             </div>
             <div>
                 <label>Email</label>
-                <Field
-                name="email"
-                component="input"
-                type="email"
-                required
+                <Field name="email" render={({field}) => {
+                    return <Input
+                    {...field}
+                    type="email"
+                    required />
+                }} 
                 />
                 <ErrorMessage
                 name="email"
@@ -35,11 +38,12 @@ const Name = (props) => {
             </div>
             <div>
                 <label>Password</label>
-                <Field
-                name="password"
-                component="input"
-                type="password"
-                required
+                <Field name="password" render={({field}) => {
+                    return <Input
+                    {...field}
+                    type="password"
+                    required />
+                }} 
                 />
                 <ErrorMessage
                 name="password"
@@ -49,11 +53,12 @@ const Name = (props) => {
             </div>
             <div>
                 <label>Confirm Password</label>
-                <Field
-                name="passwordConfirm"
-                component="input"
-                type="password"
-                required
+                <Field name="passwordConfirm" render={({field}) => {
+                    return <Input
+                    {...field}
+                    type="password"
+                    required />
+                }} 
                 />
                 <ErrorMessage
                 name="passwordConfirm"
@@ -61,7 +66,7 @@ const Name = (props) => {
                 className="field-error"
                 />
             </div>
-        </div>
+        </Container>
     )
 }
 

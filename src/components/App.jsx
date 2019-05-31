@@ -1,6 +1,7 @@
 import React from "react";
 import zxcvbn from "zxcvbn";
 import { Address, Name, Phone, Wizard } from "./forms";
+import { Container } from 'semantic-ui-react';
 
 export default class App extends React.Component {
     initialValues = {
@@ -55,10 +56,11 @@ export default class App extends React.Component {
         const { shipments } = this.props.location.state;
         
         return (
-            <div className='container'>
-                <Wizard 
+            <Container textAlign="center">
+                <Wizard
                 initialValues = {this.initialValues}
                 onSubmit={this.onSubmit}
+                shipments={shipments}
                 >
                     <Wizard.Step  validate={this.validate} >
                         <Name />
@@ -72,7 +74,7 @@ export default class App extends React.Component {
                         </Wizard.Step>
                     )}
                 </Wizard>
-            </div>
+            </Container>
         )
     }
 } 
