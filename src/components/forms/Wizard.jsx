@@ -15,6 +15,9 @@ export default class Wizard extends React.Component {
         };
     }
 
+    /**
+     * Handle transition to next step in form
+     */
     next = values => {
         this.setState(state => ({
             step: Math.min(state.step + 1, this.props.children.length - 1),
@@ -22,6 +25,9 @@ export default class Wizard extends React.Component {
         }));
     };
 
+    /**
+     * Handle transition to previous step in form
+     */
     prev = () => {
         this.setState(state => ({
             step: Math.max(state.step - 1, 0)
@@ -29,9 +35,7 @@ export default class Wizard extends React.Component {
     };
 
     validate = values => {
-        const currentStep = React.Children.toArray(this.props.children)[
-          this.state.step
-        ];
+        const currentStep = React.Children.toArray(this.props.children)[this.state.step];
         return currentStep.props.validate ? currentStep.props.validate(values) : {};
     };
 

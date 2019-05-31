@@ -19,10 +19,17 @@ export default class App extends React.Component {
         state: '',
     }
     
+    /**
+     * Determine password strength using Dropbox's zxcvbn package.
+     * @param password {string} 
+     */
     weightPassword = password => {
         return zxcvbn(password).feedback;
     }
 
+    /**
+     * Performs form validation on email and password fields
+     */
     validate = values => {
         const errors = {};
 
@@ -48,6 +55,9 @@ export default class App extends React.Component {
         return errors;
     }
 
+    /**
+     * Navigate to plan page and pass form data along
+     */
     onSubmit = (values) => {
         this.props.history.push('/plan', {data: values})
     }

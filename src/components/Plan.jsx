@@ -3,6 +3,10 @@ import { Container, Button, Checkbox } from 'semantic-ui-react'
 
 class Plan extends React.Component {
     state = { checked: [false, false, false] };
+
+    /** 
+     * Render new state for all checkboxes so only one is checked at a time
+     */
     toggle = (e) => {
         const newState = [false, false, false];
         newState[e.target.id] = true;

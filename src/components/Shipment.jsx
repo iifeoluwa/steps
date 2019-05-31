@@ -7,16 +7,16 @@ const Shipment = withRouter(({ history }) => (
         <Header as="h3" color='teal'>Are You Accepting Shipments?</Header>
         <Button 
             type="button" 
+            onClick={() => history.push('/profile', {shipments: false})}
+            >
+            No
+        </Button>
+        <Button 
+            type="button" 
             primary
             onClick={() => history.push('/profile', {shipments: true})}
             >
             Yes
-        </Button>
-        <Button 
-            type="button" 
-            onClick={() => history.push('/profile', {shipments: false})}
-            >
-            No
         </Button>
     </Container>
 ))
